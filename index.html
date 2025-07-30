@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Te amo</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f8c8dc; /* rosa cálido */
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 4em;
+      margin: 0;
+      color: white;
+      text-shadow: 2px 2px 4px #00000044;
+    }
+
+    p {
+      font-size: 1.3em;
+      max-width: 90%;
+      margin: 20px auto;
+      color: white;
+      text-shadow: 1px 1px 3px #00000033;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #ffe;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 3s ease-out forwards;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -7.5px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -7.5px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body onclick="generateHearts(event)">
+  <h1>Te amo</h1>
+  <p>
+    Para que comiences este mes de la mejor manera posible, no puedo ni quiero olvidarte porque sos lo mejor que me pasó en la vida.
+  </p>
+  <a href="https://youtu.be/9e7_MzTR8oE?si=byP9XuA3WVTjx8ZR" target="_blank">💖 Ver video</a>
+
+  <script>
+    function generateHearts(e) {
+      for (let i = 0; i < 5; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = (e.clientX - 7 + Math.random() * 40 - 20) + "px";
+        heart.style.top = (e.clientY - 7 + Math.random() * 40 - 20) + "px";
+        heart.style.background = ["#ff5e5e", "#ff8fa3", "#ff4d6d"][Math.floor(Math.random()*3)];
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3000);
+      }
+    }
+  </script>
+</body>
+</html>
